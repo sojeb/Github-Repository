@@ -1,0 +1,23 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+  apply from: "constants.gradle"
+  repositories {
+    google()
+    mavenCentral()
+  }
+  dependencies {
+    classpath deps.pluginBuildGradle
+    classpath deps.pluginKotlinGradle
+    classpath deps.pluginSafeArgs
+    classpath deps.pluginDaggerHilt
+    classpath deps.pluginKotlinSerialization
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    mavenCentral()
+  }
+}

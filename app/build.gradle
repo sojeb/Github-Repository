@@ -1,0 +1,50 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'androidx.navigation.safeargs'
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../depgraph.gradle'
+apply from: '../shared.gradle'
+apply from: '../compose.gradle'
+apply from: '../ktlint.gradle'
+
+android {
+  compileSdkVersion configs.compileSdkVersion
+  defaultConfig {
+    applicationId configs.packageName
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
+    versionCode configs.versionCode
+    versionName configs.versionName
+    testInstrumentationRunner "com.sohid.brain23.CustomAndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled true
+      proguardFiles(getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro")
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
+  }
+  kotlinOptions {
+    jvmTarget = '1.8'
+    freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check", "-Xopt-in=kotlin.RequiresOptIn"]
+  }
+  buildFeatures {
+    compose true
+  }
+  composeOptions {
+    kotlinCompilerVersion versions.kotlin
+    kotlinCompilerExtensionVersion versions.compose
+  }
+  dynamicFeatures = [':dynamic:repo']
+}
+
+dependencies {
+
+  // module
+  implementation(project(':base'))
+}

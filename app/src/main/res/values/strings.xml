@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="empty_repository_text">You did not browse any repository</string>
+  <string name="empty_repository_details">Long press to delete repository</string>
+</resources>

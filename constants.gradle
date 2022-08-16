@@ -1,0 +1,126 @@
+project.ext {
+
+  configs = [
+      versionName: "1.0.0",
+      versionCode: 1,
+      packageName: "com.sohid.brain23",
+      compileSdkVersion: 31,
+      targetSdkVersion: 31,
+      minSdkVersion: 23,
+  ]
+
+  versions = [
+      // library
+      buildGradle: "7.0.0",
+      kotlin: "1.5.21",
+      coroutine: "1.5.2",
+      compose: "1.0.1",
+      lifecycle: "2.4.0",
+      navigation: "2.3.5",
+      room: "2.3.0",
+      dagger: "2.40",
+      androidHilt: "1.0.0",
+      retrofit: "2.9.0",
+      okhttp: "4.9.0",
+      markdown: "4.6.2",
+  ]
+
+  deps = [
+      // plugin
+      pluginBuildGradle: "com.android.tools.build:gradle:${versions.buildGradle}",
+      pluginKotlinGradle: "org.jetbrains.kotlin:kotlin-gradle-plugin:${versions.kotlin}",
+      pluginSafeArgs: "androidx.navigation:navigation-safe-args-gradle-plugin:${versions.navigation}",
+      pluginDaggerHilt: "com.google.dagger:hilt-android-gradle-plugin:${versions.dagger}",
+      pluginKotlinSerialization: "org.jetbrains.kotlin:kotlin-serialization:${versions.kotlin}",
+
+      // desugar
+      desugar: "com.android.tools:desugar_jdk_libs:1.1.5",
+
+      // kotlin
+      kotlin: "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}",
+      kotlinSerialization: "org.jetbrains.kotlin.plugin.serialization:${versions.kotlin}",
+
+      // coroutine
+      coroutineCore: "org.jetbrains.kotlinx:kotlinx-coroutines-core:${versions.coroutine}",
+      coroutineAndroid: "org.jetbrains.kotlinx:kotlinx-coroutines-android:${versions.coroutine}",
+      coroutineTest: "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.coroutine}",
+
+      // androidx
+      appCompat: "androidx.appcompat:appcompat:1.3.1",
+      material: "com.google.android.material:material:1.4.0",
+      coreKtx: "androidx.core:core-ktx:1.7.0",
+      activityKtx: "androidx.activity:activity-ktx:1.4.0",
+      fragmentKtx: "androidx.fragment:fragment-ktx:1.3.6",
+
+      // compose
+      activityCompose: "androidx.activity:activity-compose:1.3.0",
+      navigationCompose: "androidx.navigation:navigation-compose:2.4.0-alpha05",
+      viewModelCompose: "androidx.lifecycle:lifecycle-viewmodel-compose:1.0.0-alpha07",
+      hiltNavigationCompose: "androidx.hilt:hilt-navigation-compose:1.0.0-alpha02",
+      composeUi: "androidx.compose.ui:ui:${versions.compose}",
+      composeUiTooling: "androidx.compose.ui:ui-tooling:${versions.compose}",
+      composeCompiler: "androidx.compose.compiler:compiler:${versions.compose}",
+      composeMaterial: "androidx.compose.material:material:${versions.compose}",
+      composeFoundation: "androidx.compose.foundation:foundation:${versions.compose}",
+      composeAnimation: "androidx.compose.animation:animation:${versions.compose}",
+      composeIconsCore: "androidx.compose.material:material-icons-core:${versions.compose}",
+      composeIconsExtended: "androidx.compose.material:material-icons-extended:${versions.compose}",
+
+      // navigation
+      navCommonKtx: "androidx.navigation:navigation-common-ktx:${versions.navigation}",
+      navRuntimeKtx: "androidx.navigation:navigation-runtime-ktx:${versions.navigation}",
+      navFragmentKtx: "androidx.navigation:navigation-fragment-ktx:${versions.navigation}",
+      navUiKtx: "androidx.navigation:navigation-ui-ktx:${versions.navigation}",
+      navDfm: "androidx.navigation:navigation-dynamic-features-fragment:${versions.navigation}",
+
+      // lifecycle
+      lifecycleRuntime: "androidx.lifecycle:lifecycle-runtime-ktx:${versions.lifecycle}",
+      lifecycleCompiler: "androidx.lifecycle:lifecycle-compiler:${versions.lifecycle}",
+      viewmodelKtx: "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}",
+
+      // dependency injection
+      dagger: "com.google.dagger:dagger:${versions.dagger}",
+      daggerCompiler: "com.google.dagger:dagger-compiler:${versions.dagger}",
+      daggerHilt: "com.google.dagger:hilt-android:${versions.dagger}",
+      daggerHiltCompiler: "com.google.dagger:hilt-android-compiler:${versions.dagger}",
+      daggerHiltTesting: "com.google.dagger:hilt-android-testing:${versions.dagger}",
+
+      // network
+      retrofit: "com.squareup.retrofit2:retrofit:${versions.retrofit}",
+      retrofitConverter: "com.jakewharton.retrofit:retrofit2-kotlinx-serialization-converter:0.8.0",
+      serializationJson: "org.jetbrains.kotlinx:kotlinx-serialization-json:1.0.1",
+      okhttp: "com.squareup.okhttp3:okhttp:${versions.okhttp}",
+      loggingInterceptor: "com.squareup.okhttp3:logging-interceptor:${versions.okhttp}",
+      mockWebServer: "com.squareup.okhttp3:mockwebserver:${versions.okhttp}",
+
+      // storage
+      roomRuntime: "androidx.room:room-runtime:${versions.room}",
+      roomCompiler: "androidx.room:room-compiler:${versions.room}",
+      roomKtx: "androidx.room:room-ktx:${versions.room}",
+
+      // image
+      coil: "io.coil-kt:coil:1.4.0",
+      coilCompose: "io.coil-kt:coil-compose:1.4.0",
+
+      // markdown
+      markdownCore: "io.noties.markwon:core:${versions.markdown}",
+      markdownTable: "io.noties.markwon:ext-tables:${versions.markdown}",
+      markdownImage: "io.noties.markwon:image-coil:${versions.markdown}",
+
+      // test
+      junit: "junit:junit:4.13.2",
+      mockk: "io.mockk:mockk:1.12.0",
+      truth: "com.google.truth:truth:1.1.3",
+      archCore: "androidx.arch.core:core-testing:2.1.0",
+
+      // android test
+      testCore: "androidx.test:core:1.4.0",
+      espresso: "androidx.test.espresso:espresso-core:3.4.0",
+      extJunitKtx: "androidx.test.ext:junit-ktx:1.1.3",
+      extTruth: "androidx.test.ext:truth:1.4.0",
+      banchmark: "androidx.benchmark:benchmark-junit4:1.0.0",
+
+      // lint
+      ktlint: "com.pinterest:ktlint:0.42.1",
+  ]
+}

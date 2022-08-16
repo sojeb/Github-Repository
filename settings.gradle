@@ -1,0 +1,7 @@
+include ':app'
+include ':base'
+include ':dynamic:repo'
+include ':data:repository'
+include ':data:api'
+include ':data:database'
+include ':model'

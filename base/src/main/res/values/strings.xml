@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">GitHub Repository</string>
+  <string name="dynamic_module_repo">repo</string>
+
+  <string name="repository">Repository</string>
+  <string name="history">History</string>
+
+  <string name="saved_repository">Saved repository</string>
+  <string name="delete_repository">Remove repository</string>
+</resources>

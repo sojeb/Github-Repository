@@ -1,0 +1,68 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: "kotlin-kapt"
+apply plugin: 'dagger.hilt.android.plugin'
+apply from: '../compose.gradle'
+apply from: '../shared.gradle'
+apply from: '../ktlint.gradle'
+
+android {
+  compileSdkVersion configs.compileSdkVersion
+  defaultConfig {
+    minSdkVersion configs.minSdkVersion
+    targetSdkVersion configs.targetSdkVersion
+    versionCode configs.versionCode
+    versionName configs.versionName
+    testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+  }
+  buildTypes {
+    release {
+      minifyEnabled false
+      proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+    }
+  }
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+    coreLibraryDesugaringEnabled true
+  }
+  kotlinOptions {
+    jvmTarget = '1.8'
+  }
+  buildFeatures {
+    compose true
+  }
+  composeOptions {
+    kotlinCompilerVersion versions.kotlin
+    kotlinCompilerExtensionVersion versions.compose
+  }
+}
+
+dependencies {
+
+  // module
+  api(project(':data:repository'))
+
+  // design/core
+  api(deps.appCompat)
+  api(deps.material)
+  api(deps.coreKtx)
+  api(deps.activityKtx)
+  api(deps.fragmentKtx)
+
+  // lifecycle
+  api(deps.lifecycleRuntime)
+  kapt(deps.lifecycleCompiler)
+  api(deps.viewmodelKtx)
+
+  // navigation
+  api(deps.navCommonKtx)
+  api(deps.navRuntimeKtx)
+  api(deps.navFragmentKtx)
+  api(deps.navUiKtx)
+  api(deps.navDfm)
+
+  // image
+  api(deps.coil)
+  api(deps.coilCompose)
+}
