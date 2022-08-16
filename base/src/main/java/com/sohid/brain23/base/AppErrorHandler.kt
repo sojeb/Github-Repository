@@ -8,7 +8,7 @@ class AppErrorHandler(private val context: Context) : ErrorHandler {
 
   override fun handleError(error: Throwable) {
     val message = "error: ${error.message}"
-    Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
+    Toast.makeText(context, message, Toast.LENGTH_LONG).show()
     Log.d(TAG, message)
   }
 
