@@ -9,6 +9,7 @@ Android Sample App For Fetching  Github Repository
 
 
 
+
 ## Requirement:                                                                                       Status
 
 Application which shows the top 50 top most starred github repositories by searching with             Done
@@ -65,4 +66,11 @@ Retrofit.Builder()
     ): ListResponse<RepositoryResponse>
 
   }
+
+#Feature 
+
+1. Show github repository list
+2. Show Details For each repository 
+3. Save Browse data
+4. Delete Browse data on Long press
 
