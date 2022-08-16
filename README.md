@@ -1,4 +1,4 @@
-Android Sample App For Featching Github Repository 
+Android Sample App For Fetching  Github Repository 
 
 
 
@@ -9,9 +9,9 @@ Android Sample App For Featching Github Repository
 
 
 
-## Requirment:                                                                                       Status
+## Requirement:                                                                                       Status
 
-Aplication which shows the top 50 top most starred github repositories by searching with             Done
+Application which shows the top 50 top most starred github repositories by searching with             Done
 the "Android" keyword.
 
  A list of repositories page where list of repositories showed.                                      Done
@@ -31,12 +31,12 @@ the "Android" keyword.
 
 
 ## Used Libraries        Reason Used In this Project
- Jetpack Compose         Desing Showing Repository List and Details of specific Repository
+ Jetpack Compose         Design Showing Repository List and Details of specific Repository
  Navigation              Used for Fragment transitions)
  View Binding            For Bind views
  ViewModel               hold Repository Data for providing to UI
  LiveData                Observe data 
- Kotlin Coroutine        Featching Server Data
+ Kotlin Coroutine        Fetching  Server Data
  Dagger2                 Dependency Injection)
  Hilt                    Dependency Injection for Android)
  Room Database           Save Repository Data explore from list
