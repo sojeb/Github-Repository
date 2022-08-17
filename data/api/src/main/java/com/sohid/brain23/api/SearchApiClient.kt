@@ -22,7 +22,19 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     @Query("per_page") per_page: Int = 50
     ): ListResponse<RepositoryResponse>
 
+      @GET("search/repositories")
+      suspend fun getLatestRepo(
+          @Query("q") query: String="Android",
+          @Query("sort") sort: String = "updated",
+          @Query("order") order: String = "desc",
+          @Query("page") page: Int = 1,
+          @Query("per_page") per_page: Int = 10
+      ): ListResponse<RepositoryResponse>
+
+
   }
+
+
 
   private val service = retrofit.create(Service::class.java)
 
@@ -35,6 +47,13 @@ class SearchApiClient(retrofit: Retrofit) : SearchApi {
     }
   }
 
+    override suspend fun getLatestRepo(): List<Repo> {
+        return withContext(IO) {
+            service.getLatestRepo( )
+                .items
+                ?.map { response -> response.toModel() } ?: emptyList()
+        }
+    }
 
 
 }

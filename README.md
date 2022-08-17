@@ -17,7 +17,7 @@ the "Android" keyword.
 
  A list of repositories page where list of repositories showed.                                      Done
  List fetched from https://api.github.com/ api using "Android" as query keyword.                     Done
- List can be sorted by either last update date time or star count.                                   Partially Done (Only fetching data start count )
+ List can be sorted by either last update date time or star count.                                   Done
  Selected sorting option persists in further app sessions.                                           Not Done
  A repo details page, to which navigated by clicking on an item from the list.                       Done
  Details page shows repo owner's name, photo, repository's description, last update date             Done

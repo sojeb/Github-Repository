@@ -25,20 +25,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
-
-    lifecycleScope.launch {
-      systemViewModel.uiState
-        .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
-        .collect { uiState ->
-          val nightModeSetting = if (uiState.isNightMode) {
-            AppCompatDelegate.MODE_NIGHT_YES
-          } else {
-            AppCompatDelegate.MODE_NIGHT_NO
-          }
-          AppCompatDelegate.setDefaultNightMode(nightModeSetting)
-        }
-    }
-
     lifecycleScope.launch {
       navigationViewModel.direction
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)

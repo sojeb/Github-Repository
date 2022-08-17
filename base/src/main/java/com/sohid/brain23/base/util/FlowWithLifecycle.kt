@@ -10,7 +10,10 @@ import androidx.lifecycle.flowWithLifecycle
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
-// https://github.com/chrisbanes/tivi/blob/8d15aab2a14a37354cf2231f816c481cf6326f73/common-ui-compose/src/main/java/app/tivi/common/compose/FlowWithLifecycle.kt
+//In an Android app, Kotlin flows are typically collected from the UI layer
+//to display data updates on the screen. However, you want to collect these
+//flows making sure you’re not doing more work than necessary, wasting resources
+//(both CPU and memory) or leaking data when   the view goes to the background.
 @Composable
 fun <T> rememberFlowWithLifecycle(
   flow: Flow<T>,
