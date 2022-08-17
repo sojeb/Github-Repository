@@ -7,7 +7,7 @@ data class RepositoryListUiState(
   val hotRepos: Map<String, List<Repo>> = emptyMap(),
   val result: List<Repo> = listOf(),
   val isLoading: Boolean = false,
-  var searchOrder: String = "Sort By Star"
+  var searchOrder: String = "By Star Count"
 ) {
 
   companion object {

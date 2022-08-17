@@ -33,14 +33,7 @@ fun RepositoryListScreen(
   userViewModel: UserViewModel = viewModel(LocalActivity.current),
   navigationViewModel: NavigationViewModel = viewModel(LocalActivity.current),
 ) {
- // private val _uiState = MutableStateFlow(RepositoryListUiState.EMPTY)
-  //val uiState: StateFlow<RepositoryListUiState> = _uiState
-
-
   val uiState by repositoryViewModel.uiState.collectAsLifecycleAwareState()
-
-   //var _uiState: MutableStateFlow<RepositoryListUiState> = MutableStateFlow(RepositoryListUiState.EMPTY)
-
   val context = LocalContext.current
 
   Scaffold(
@@ -89,8 +82,8 @@ fun RepositoryBody(
 @Composable
 fun DropdownDemo(  repositoryListUiState: RepositoryListUiState,   repositoryViewModel: RepositoryListViewModel) {
   var expanded by remember { mutableStateOf(false) }
-  val items = listOf("Sort By Star", "Sort By Date")
-  var selectedIndex by remember { mutableStateOf(0) }
+  val items = listOf("By Star Count", "By Updated Time")
+  var selectedIndex by remember { mutableStateOf(if(repositoryViewModel.getOrdering()=="By Star Count") 0 else 1) }
   Box(modifier = Modifier.fillMaxWidth(),
     contentAlignment = Alignment.TopEnd
   ) {
