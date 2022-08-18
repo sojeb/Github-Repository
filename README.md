@@ -18,7 +18,7 @@ the "Android" keyword.
  A list of repositories page where list of repositories showed.                                      Done
  List fetched from https://api.github.com/ api using "Android" as query keyword.                     Done
  List can be sorted by either last update date time or star count.                                   Done
- Selected sorting option persists in further app sessions.                                           Not Done
+ Selected sorting option persists in further app sessions.                                           Done
  A repo details page, to which navigated by clicking on an item from the list.                       Done
  Details page shows repo owner's name, photo, repository's description, last update date             Done
  time in month-day-year hour:seconds format, each field in 2 digit numbers.                          Done (Have a issue for device bellow android 8)
@@ -71,6 +71,8 @@ Retrofit.Builder()
 
 1. Show github repository list
 2. Show Details For each repository 
-3. Save Browse data
-4. Delete Browse data on Long press
+3. Repository can be order by star count or last updated 
+4. Selected order will save for future 
+5. Save Browse data
+6. Delete Browse data on Long press
 

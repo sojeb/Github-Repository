@@ -1,6 +1,5 @@
 package com.sohid.brain23.repositorylist
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
@@ -20,11 +19,8 @@ import com.sohid.brain23.base.ui.component.RepoCell
 import com.sohid.brain23.base.util.collectAsLifecycleAwareState
 import com.sohid.brain23.base.viewmodel.NavigationViewModel
 import com.sohid.brain23.base.viewmodel.SystemViewModel
-import com.sohid.brain23.base.viewmodel.UserUiState
 import com.sohid.brain23.base.viewmodel.UserViewModel
 import com.sohid.brain23.model.Repo
-import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 
 @Composable
 fun RepositoryListScreen(
@@ -35,6 +31,7 @@ fun RepositoryListScreen(
 ) {
   val uiState by repositoryViewModel.uiState.collectAsLifecycleAwareState()
   val context = LocalContext.current
+
 
   Scaffold(
     topBar = {
@@ -58,6 +55,8 @@ fun RepositoryListScreen(
   if (uiState.isLoading) {
     ProgressView()
   }
+    repositoryViewModel.fetchingRepository(repositoryViewModel.sortOrder.value)
+
 }
 
 
@@ -97,10 +96,11 @@ fun DropdownDemo(  repositoryListUiState: RepositoryListUiState,   repositoryVie
       modifier = Modifier.wrapContentSize().align(Alignment.TopEnd)) {
       items.forEachIndexed { index, s ->
         DropdownMenuItem(onClick = {
-          repositoryViewModel.setOrdering(items[index])
-          selectedIndex = index
+          repositoryViewModel.setOrdering(items[index]);
+                selectedIndex = index
           expanded = false
-          repositoryViewModel.fetchingRepository()
+
+      //    repositoryViewModel.fetchingRepository()
 
         }) {
           Text(text = s )

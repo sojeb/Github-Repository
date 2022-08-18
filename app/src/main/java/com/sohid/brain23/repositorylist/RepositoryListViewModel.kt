@@ -2,6 +2,11 @@ package com.sohid.brain23.repositorylist
 
 import android.content.SharedPreferences
 import android.util.Log
+import androidx.compose.runtime.State
+import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.sohid.brain23.base.ErrorHandler
@@ -23,27 +28,44 @@ class RepositoryListViewModel @Inject constructor(
 ) : ViewModel() {
   val sortOrderkey: String= "sort_order";
   val sortOrderDefaultValue: String= "By Star Count";
+  var TAG : String="Repository List "
   private val _uiState = MutableStateFlow(RepositoryListUiState.EMPTY)
   val uiState: StateFlow<RepositoryListUiState> = _uiState
-  var TAG : String="Repository List "
+  var oldOrder: String="";
+
+  private val _sortOrder= mutableStateOf(oldOrder)
+  val sortOrder: State<String> = _sortOrder
+
 
   init {
-    fetchingRepository()
+      _sortOrder.value = getOrdering()
+  }
+  fun isSameOrder (order:String): Boolean{
+    if(oldOrder== order){
+      return true;
+
+    }else{
+      oldOrder=order;
+      return false;
+
+    }
   }
   fun setOrdering(order: String){
     sharedPreferences.edit().putString(sortOrderkey,order).apply()
+    _sortOrder.value = order
   }
-  fun getOrdering(): String{
+  fun getOrdering(): String {
   return  sharedPreferences.getString(sortOrderkey,sortOrderDefaultValue).toString()
   }
-   fun fetchingRepository(){
+   fun fetchingRepository(order : String){
+     if(isSameOrder(order)) return;
+
     viewModelScope.launch {
       runCatching {
-        Log.i(TAG, "method called for search order name: "+_uiState.value.searchOrder)
         _uiState.value = _uiState.value.copy(isLoading = true)
         mutableMapOf<String, List<Repo>>().also { map ->
           coroutineScope {
-            async { map["Android"] = if(getOrdering()=="By Star Count") searchRepository.searchHotRepos() else searchRepository.searchLatestRepos() }.await()
+            async { map["Android"] = if(order=="By Star Count") searchRepository.searchHotRepos() else searchRepository.searchLatestRepos() }.await()
           }
 
         }
