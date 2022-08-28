@@ -25,6 +25,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
   override fun onCreate(savedInstanceState: Bundle?) {
     super.onCreate(savedInstanceState)
+    //lifecycleScope : this coroutine will alive until activity alive
+    //GlobalScope : this coroutine will alive until application alive
     lifecycleScope.launch {
       navigationViewModel.direction
         .flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)

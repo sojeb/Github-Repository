@@ -208,7 +208,7 @@ fun RepoOverview(
         tint = MaterialTheme.colors.onSurface.copy(alpha = ContentAlpha.medium)
       )
       if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.O) {
-        Text(text = "Updated At: ${LocalDateTimeConverter().fromDateToTime(repo.updatedAt)}", modifier = Modifier.padding(start = 8.dp))
+        Text(text = "Updated At: ${LocalDateTimeConverter().getFormatedDate(repo.updatedAt)}", modifier = Modifier.padding(start = 8.dp))
 
       }else{
         Text(text = "Local Date is not Supported bellow android 8", modifier = Modifier.padding(start = 8.dp))
